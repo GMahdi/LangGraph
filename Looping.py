@@ -22,10 +22,12 @@ def play(state: AgentState) -> AgentState:
     guess = random.randint( state["lowest_val"], state["highest_val"])
     state["guesses"].append(guess)
     state["counter"] += 1
+    
     if guess > state["target"]:
         state["highest_val"] = state["target"]
     else:
         state["lowest_val"] = state["target"]
+   
     return state
 
 def to_continue(state: AgentState) -> AgentState:
@@ -43,7 +45,7 @@ def to_continue(state: AgentState) -> AgentState:
 graph = StateGraph(AgentState)
 graph.add_node("init", init)
 graph.add_node("play", play)
-graph.add_node("to_continue", lambda x: x)
+#graph.add_node("to_continue", lambda x: x)
 
 graph.add_edge(START, "init")
 graph.add_edge("init", "play")
@@ -60,5 +62,5 @@ with open("langgraph.png", "wb") as f:
 
 print("Image saved to langgraph.png")
 
-agent = app.invoke({"lowest_val":0, "highest_val":500, "target":21, "guesses": [], "counter":-1})
+agent = app.invoke({"lowest_val":0, "highest_val":500, "target":21, "guesses": [], "counter":100})
 print(agent)
