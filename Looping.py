@@ -64,3 +64,5 @@ print("Image saved to langgraph.png")
 
 agent = app.invoke({"lowest_val":0, "highest_val":500, "target":21, "guesses": [], "counter":100})
 print(agent)
+
+

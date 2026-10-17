@@ -14,14 +14,11 @@ class AgentState(TypedDict):
 model = ChatOpenAI(model="gpt-4")
 
 def processMessage(state: AgentState) -> AgentState:
-    """Get response of the human message"""
-    message = state["messages"]
-    while message !="exit":
-        response = model.invoke(state["messages"])
-        print(response.content)
-        message =  input("type 'exit' to finish or Enter: ")
-        state["messages"] = state["messages"].append(message)
-        
+    """Get response of the human message"""    
+
+    response = model.invoke(state["messages"])
+    print(response.content)
+    
     return state
 
 graph = StateGraph(AgentState)
@@ -31,5 +28,7 @@ graph.add_edge("process", END)
 
 app = graph.compile()
 
-message = input("Enter: ")
-app.invoke({"messages": message})
+user_input = input("Enter: ")
+while user_input != "exit":
+    app.invoke({"messages": [HumanMessage(content=user_input)]})
+    user_input = input("Enter: ")
