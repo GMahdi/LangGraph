@@ -33,3 +33,16 @@ while user_input != "exit":
     result = app.invoke({"messages": conversation_history})
     conversation_history = result["messages"]
     user_input = input("Enter: ")
+
+with open("chatlog.txt", "a") as file:
+    file.write("Conversation Log\n")
+    for message in conversation_history:
+        if isinstance(message, HumanMessage):
+            file.write(f"You: {message.content}\n")
+        elif isinstance(message, AIMessage):
+            file.write(f"AI: {message.content}")
+    file.write("End of conversation\n")
+
+print("COnversation saved to chatlog.txt")
+
+

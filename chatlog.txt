@@ -1,0 +1,6 @@
+Conversation Log
+You: I love in NYC, what is my name
+AI: As an AI, I don't have personal data about individuals unless it has been shared with me in the course of our conversation. I am designed to respect user privacy and confidentiality.End of conversation
+Conversation Log
+You: My name is Bob, where do I live?
+AI: As an AI, I don't have access to personal data about individuals unless it has been shared with me in the course of our conversation. I am designed to respect user privacy and confidentiality.End of conversation
